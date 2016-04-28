@@ -48,11 +48,14 @@ eBendSpinPass(vector<double> &x, double L, double ANGLE, unsigned Nint){
         //spin kick
         hs = (1.0 + x[x_]*iRHO );
         dummy = 1.0 +BETA2*x[dE_] -BETA2*log(hs); //electric potential
-        W[0] = -0.5*BETAGAMMA*EDM*dummy*iRHO/hs;
+        dummy2 = 0.5*EDM*BETAGAMMA2*BETA*x[px_]*iRHO/hs/(1.0+GAMMA*dummy);
+        W[0] = 0.5*EDM*BETAGAMMA*dummy*iRHO/hs - dummy2*x[px_];
         //W[2] = -x[ps_]*iRHO/(hs*hs)*(1.0-dummy);
-        W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))  -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) );
-        dummy = BETA2*GAMMA*(MDM+1.0/(1.0+dummy*GAMMA));
-        W[1] = -x[pz_]*dummy*iRHO/hs;
+        W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))
+                                     -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) )
+                -dummy2*x[pz_];
+        dummy = BETA2*GAMMA*(MDM+1.0/(1.0+GAMMA*dummy));
+        W[1] = -x[pz_]*dummy*iRHO/hs-dummy2*x[ps_]/hs;
         //dummy=norm(W);
         dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
         dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);
@@ -104,11 +107,14 @@ eBendSpinPass(vector<double> &x, double L, double ANGLE, unsigned Nint){
     //spin kick
     hs = (1.0 + x[x_]*iRHO );
     dummy = 1.0 +BETA2*x[dE_] -BETA2*log(hs); //electric potential
-    W[0] = -0.5*BETAGAMMA*EDM*dummy*iRHO/hs;
+    dummy2 = 0.5*EDM*BETAGAMMA2*BETA*x[px_]*iRHO/hs/(1.0+GAMMA*dummy);
+    W[0] = 0.5*EDM*BETAGAMMA*dummy*iRHO/hs - dummy2*x[px_];
     //W[2] = -x[ps_]*iRHO/(hs*hs)*(1.0-dummy);
-    W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))  -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) );
-    dummy = BETA2*GAMMA*(MDM+1.0/(1.0+dummy*GAMMA));
-    W[1] = -x[pz_]*dummy*iRHO/hs;
+    W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))
+                                 -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) )
+            -dummy2*x[pz_];
+    dummy = BETA2*GAMMA*(MDM+1.0/(1.0+GAMMA*dummy));
+    W[1] = -x[pz_]*dummy*iRHO/hs-dummy2*x[ps_]/hs;
     //dummy=norm(W);
     dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
     dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);
@@ -202,11 +208,14 @@ eBendSpinPass(vector<double> &x, double L, double ANGLE, unsigned Nint, unsigned
         //spin kick
         hs = (1.0 + x[x_]*iRHO );
         dummy = 1.0 +BETA2*x[dE_] -BETA2*log(hs); //electric potential
-        W[0] = -0.5*BETAGAMMA*EDM*dummy*iRHO/hs;
+        dummy2 = 0.5*EDM*BETAGAMMA2*BETA*x[px_]*iRHO/hs/(1.0+GAMMA*dummy);
+        W[0] = 0.5*EDM*BETAGAMMA*dummy*iRHO/hs - dummy2*x[px_];
         //W[2] = -x[ps_]*iRHO/(hs*hs)*(1.0-dummy);
-        W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))  -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) );
-        dummy = BETA2*GAMMA*(MDM+1.0/(1.0+dummy*GAMMA));
-        W[1] = -x[pz_]*dummy*iRHO/hs;
+        W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))
+                                     -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) )
+                -dummy2*x[pz_];
+        dummy = BETA2*GAMMA*(MDM+1.0/(1.0+GAMMA*dummy));
+        W[1] = -x[pz_]*dummy*iRHO/hs-dummy2*x[ps_]/hs;
         //dummy=norm(W);
         dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
         dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);
@@ -242,11 +251,14 @@ eBendSpinPass(vector<double> &x, double L, double ANGLE, unsigned Nint, unsigned
             //spin kick
             hs = (1.0 + x[x_]*iRHO );
             dummy = 1.0 +BETA2*x[dE_] -BETA2*log(hs); //electric potential
-            W[0] = -0.5*BETAGAMMA*EDM*dummy*iRHO/hs;
+            dummy2 = 0.5*EDM*BETAGAMMA2*BETA*x[px_]*iRHO/hs/(1.0+GAMMA*dummy);
+            W[0] = 0.5*EDM*BETAGAMMA*dummy*iRHO/hs - dummy2*x[px_];
             //W[2] = -x[ps_]*iRHO/(hs*hs)*(1.0-dummy);
-            W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))  -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) );
-            dummy = BETA2*GAMMA*(MDM+1.0/(1.0+dummy*GAMMA));
-            W[1] = -x[pz_]*dummy*iRHO/hs;
+            W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))
+                                         -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) )
+                    -dummy2*x[pz_];
+            dummy = BETA2*GAMMA*(MDM+1.0/(1.0+GAMMA*dummy));
+            W[1] = -x[pz_]*dummy*iRHO/hs-dummy2*x[ps_]/hs;
             //dummy=norm(W);
             dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
             dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);
@@ -300,11 +312,14 @@ eBendSpinPass(vector<double> &x, double L, double ANGLE, unsigned Nint, unsigned
     //spin kick
     hs = (1.0 + x[x_]*iRHO );
     dummy = 1.0 +BETA2*x[dE_] -BETA2*log(hs); //electric potential
-    W[0] = -0.5*BETAGAMMA*EDM*dummy*iRHO/hs;
+    dummy2 = 0.5*EDM*BETAGAMMA2*BETA*x[px_]*iRHO/hs/(1.0+GAMMA*dummy);
+    W[0] = 0.5*EDM*BETAGAMMA*dummy*iRHO/hs - dummy2*x[px_];
     //W[2] = -x[ps_]*iRHO/(hs*hs)*(1.0-dummy);
-    W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))  -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) );
-    dummy = BETA2*GAMMA*(MDM+1.0/(1.0+dummy*GAMMA));
-    W[1] = -x[pz_]*dummy*iRHO/hs;
+    W[2] = x[ps_]*iRHO/(hs*hs)*( offMagicDelta/magicGAMMA*(1.0+1.0/(1.0+offMagicDelta*magicBETA2))
+                                 -BETA2*(GAMMA-1.0)*(x[dE_]-log(hs))/(1.0+GAMMA*dummy) )
+            -dummy2*x[pz_];
+    dummy = BETA2*GAMMA*(MDM+1.0/(1.0+GAMMA*dummy));
+    W[1] = -x[pz_]*dummy*iRHO/hs-dummy2*x[ps_]/hs;
     //dummy=norm(W);
     dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
     dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);

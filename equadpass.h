@@ -17,7 +17,7 @@ eQuadSpinPass(vector<double> &x, double L, double K1, unsigned Nint){
     double dummy = x[dE_]*BETA2 + 1.0 - 0.5*K1*(x[x_]*x[x_]-x[z_]*x[z_])*BETA2;
 
     //spin precession vector and dummy variables
-    vector<double> W(3); double dummy2, Cos, Sin;
+    vector<double> W(3); double dummy2, dummy3, Cos, Sin;
 
     // initialize p_s : hard edge fringe field effect
     x[ps_]=sqrt( dummy*dummy/BETA2-1.0/BETAGAMMA2 - x[px_]*x[px_] - x[pz_]*x[pz_] );
@@ -41,9 +41,10 @@ eQuadSpinPass(vector<double> &x, double L, double K1, unsigned Nint){
         //spin kick
         dummy = x[dE_]*BETA2 +1.0 -0.5*K1*(x[x_]*x[x_]-x[z_]*x[z_])*BETA2;
         dummy2 = BETA*(MDM+1.0/(1.0+GAMMA*dummy));
-        W[0] = betaGammaK1*( -0.5*x[x_]*EDM*dummy + x[ps_]*x[z_]*dummy2  );
-        W[1] = -betaGammaK1*( x[pz_]*x[x_] + x[px_]*x[z_]  )*dummy2;
-        W[2] = betaGammaK1*( 0.5*x[z_]*EDM*dummy + x[ps_]*x[x_]*dummy2  );
+        dummy3 = 0.5*EDM*BETA2*GAMMA*(x[x_]*x[px_]-x[z_]*x[pz_])/(1.0+GAMMA*dummy);
+        W[0] = betaGammaK1*( x[ps_]*x[z_]*dummy2 +0.5*x[x_]*EDM*dummy -x[px_]*dummy3 );
+        W[1] = -betaGammaK1*( (x[pz_]*x[x_] + x[px_]*x[z_])*dummy2 + x[ps_]*dummy3);
+        W[2] = betaGammaK1*( x[ps_]*x[x_]*dummy2 -0.5*x[z_]*EDM*dummy -x[pz_]*dummy3);
         //dummy=norm(W);
         dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
         dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);
@@ -139,9 +140,10 @@ eQuadSpinPass(vector<double> &x, double L, double K1, unsigned Nint, unsigned No
         //spin kick
         dummy = x[dE_]*BETA2 +1.0 -0.5*K1*(x[x_]*x[x_]-x[z_]*x[z_])*BETA2;
         dummy2 = BETA*(MDM+1.0/(1.0+GAMMA*dummy));
-        W[0] = betaGammaK1*( -0.5*x[x_]*EDM*dummy + x[ps_]*x[z_]*dummy2  );
-        W[1] = -betaGammaK1*( x[pz_]*x[x_] + x[px_]*x[z_]  )*dummy2;
-        W[2] = betaGammaK1*( 0.5*x[z_]*EDM*dummy + x[ps_]*x[x_]*dummy2  );
+        dummy3 = 0.5*EDM*BETA2*GAMMA*(x[x_]*x[px_]-x[z_]*x[pz_])/(1.0+GAMMA*dummy);
+        W[0] = betaGammaK1*( x[ps_]*x[z_]*dummy2 +0.5*x[x_]*EDM*dummy -x[px_]*dummy3 );
+        W[1] = -betaGammaK1*( (x[pz_]*x[x_] + x[px_]*x[z_])*dummy2 + x[ps_]*dummy3);
+        W[2] = betaGammaK1*( x[ps_]*x[x_]*dummy2 -0.5*x[z_]*EDM*dummy -x[pz_]*dummy3);
         //dummy=norm(W);
         dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
         dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);
@@ -175,9 +177,10 @@ eQuadSpinPass(vector<double> &x, double L, double K1, unsigned Nint, unsigned No
             //spin kick
             dummy = x[dE_]*BETA2 +1.0 -0.5*K1*(x[x_]*x[x_]-x[z_]*x[z_])*BETA2;
             dummy2 = BETA*(MDM+1.0/(1.0+GAMMA*dummy));
-            W[0] = betaGammaK1*( -0.5*x[x_]*EDM*dummy + x[ps_]*x[z_]*dummy2  );
-            W[1] = -betaGammaK1*( x[pz_]*x[x_] + x[px_]*x[z_]  )*dummy2;
-            W[2] = betaGammaK1*( 0.5*x[z_]*EDM*dummy + x[ps_]*x[x_]*dummy2  );
+            dummy3 = 0.5*EDM*BETA2*GAMMA*(x[x_]*x[px_]-x[z_]*x[pz_])/(1.0+GAMMA*dummy);
+            W[0] = betaGammaK1*( x[ps_]*x[z_]*dummy2 +0.5*x[x_]*EDM*dummy -x[px_]*dummy3 );
+            W[1] = -betaGammaK1*( (x[pz_]*x[x_] + x[px_]*x[z_])*dummy2 + x[ps_]*dummy3);
+            W[2] = betaGammaK1*( x[ps_]*x[x_]*dummy2 -0.5*x[z_]*EDM*dummy -x[pz_]*dummy3);
             //dummy=norm(W);
             dummy=sqrt(W[0]*W[0]+W[1]*W[1]+W[2]*W[2]);
             dummy2=sqrt(1.0-x[Sx_]*x[Sx_]-x[Ss_]*x[Ss_]);
