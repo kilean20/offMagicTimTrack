@@ -11,7 +11,7 @@
 const double MDM = 0.00115965218;  // anormalous magnetic momentum
 //const double EDM = 0.0;  // electric momentum g-factor
 //const double EDM = 14.6E-17;  // electric momentum g-factor
-const double EDM = 7.3E-17;  // electric momentum g-factor
+const double EDM = 9.0E-18;  // electric momentum g-factor
 
 //-----------------------composition method step size---------------------
 const double R4[3]={1.3512071919596578, -1.7024143839193155,
