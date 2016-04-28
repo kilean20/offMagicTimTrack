@@ -116,7 +116,7 @@ eQuadSpinPass(vector<double> &x, double L, double K1, unsigned Nint, unsigned No
     double dummy = x[dE_]*BETA2 + 1.0 - 0.5*K1*(x[x_]*x[x_]-x[z_]*x[z_])*BETA2;
 
     //spin precession vector and dummy variables
-    vector<double> W(3); double dummy2, Cos, Sin;
+    vector<double> W(3); double dummy2, dummy3, Cos, Sin;
 
     // initialize p_s : hard edge fringe field effect
     x[ps_]=sqrt( dummy*dummy/BETA2-1.0/BETAGAMMA2 - x[px_]*x[px_] - x[pz_]*x[pz_] );
