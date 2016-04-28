@@ -36,6 +36,7 @@ const double magicENERGY = magicGAMMA*eMASS; //MeV
 //const double offMagicDelta = 1.0E-6;
 const double offMagicDelta = 0.0;
 
+
 const double GAMMA=magicGAMMA*(1.0+offMagicDelta)-offMagicDelta/magicGAMMA;
 const double BETA=std::sqrt(1.0-1.0/GAMMA/GAMMA);
 const double BETA2=BETA*BETA;
