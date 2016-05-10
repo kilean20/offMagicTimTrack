@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
     cout << "LastElemType = " << FODO.Cell[FODO.Ncell-1].Type << endl;
     cout << "beforeWrf = " << FODO.Cell[FODO.Ncell-1].RFcav.Wrf << endl;
-    FODO.Cell[FODO.Ncell-1].RFcav.Wrf*= 1.0-(1.0E-5)/3.0;
+    FODO.Cell[FODO.Ncell-1].RFcav.Wrf*= 1.0-(1.0E-3)/3.0;
     cout << "afterWrf = " << FODO.Cell[FODO.Ncell-1].RFcav.Wrf << endl;
     cout << "DesignLegnth = " << FODO.Length << endl;
     const double cSpeed=299792458.0;
