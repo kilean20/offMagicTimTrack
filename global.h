@@ -33,7 +33,7 @@ const double magicBETA2=magicBETA*magicBETA;
 const double eMASS = 0.51099891013; // MeV/c^2
 const double magicENERGY = magicGAMMA*eMASS; //MeV
 
-const double offMagicDelta = 1.0E-3;
+const double offMagicDelta = 1.0E-2;
 //const double offMagicDelta = 0.0;
 
 
